@@ -1,0 +1,23 @@
+﻿.main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    min-height: 100px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.default {
+    min-height: 10px;
+    min-width: 10px;
+    padding: 2px;
+}
+
+.light-color {
+    color: #000;
+}
+
+.dark-color {
+    color: #fff;
+}

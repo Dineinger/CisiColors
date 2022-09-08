@@ -1,0 +1,118 @@
+﻿@font-face {
+    font-family: Poppins;
+    src: url(../Poppins-Thin.otf) format('opentype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../Poppins-ThinItalic.otf) format('opentype');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../Poppins-ExtraLight.otf) format('opentype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../Poppins-ExtraLightItalic.otf) format('opentype');
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../Poppins-Light.otf) format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../Poppins-LightItalic.otf) format('opentype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../Poppins-Italic.otf) format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../Poppins-Medium.otf);
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../Poppins-MediumItalic.otf);
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../Poppins-SemiBold.otf);
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../Poppins-SemiBoldItalic.otf);
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../Poppins-Bold.otf);
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../Poppins-BoldItalic.otf);
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../Poppins-ExtraBold.otf) format('opentype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../Poppins-ExtraBoldItalic.otf) format('opentype');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../Poppins-Black.otf) format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../Poppins-BlackItalic.otf) format('opentype');
+    font-weight: 900;
+    font-style: italic;
+}

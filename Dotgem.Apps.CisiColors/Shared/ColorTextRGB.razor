@@ -1,0 +1,17 @@
+@using System.Drawing
+
+<div class="color-text">RGB: @GetRGB(Color)</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public Color Color { get; set; }
+
+    public static string GetRGB(Color color)
+    {
+        var r = color.R;
+        var g = color.G;
+        var b = color.B;
+
+        return $"{r}, {g}, {b}";
+    }
+}

@@ -1,0 +1,32 @@
+﻿@page "/"
+@using System.Drawing
+
+<PageTitle>Index</PageTitle>
+
+<h1>Cisi Colors</h1>
+
+<Virtualize Items=@_colors>
+    <ColorOutput Color=@context.Color Name=@context.Name ColorDescriptionMode=@_colorDescriptionMode />
+</Virtualize>
+
+<ColorMenu @bind-ShowDetails=@_showDetails />
+
+@code{
+    List<(Color Color, string Name)> _colors = new(){
+        (Color.FromArgb(0xff, 0x00, 0x64), "Cisi Red"),
+        (Color.FromArgb(0xff, 0x44, 0x43), "Cisi Red Orange"),
+        (Color.FromArgb(0xff, 0x88, 0x21), "Cisi Orange"),
+        (Color.FromArgb(0xff, 0xcc, 0x00), "Cisi Yellow"),
+        (Color.FromArgb(0xaa, 0xd1, 0x32), "Cisi Green Yellow"),
+        (Color.FromArgb(0x55, 0xd7, 0x65), "Cisi Warm Green"),
+        (Color.FromArgb(0x00, 0xdc, 0x97), "Cisi Green"),
+        (Color.FromArgb(0x00, 0xb4, 0xcb), "Cisi Cyan"),
+        (Color.FromArgb(0x00, 0x8d, 0xff), "Cisi Blue"),
+        (Color.FromArgb(0x43, 0x2d, 0xff), "Cisi Blue Purple"),
+        (Color.FromArgb(0x82, 0x1e, 0xcb), "Cisi Violet"),
+        (Color.FromArgb(0xc0, 0x0f, 0x98), "Cisi Red Violet"),
+    };
+
+    ColorDescriptionMode _colorDescriptionMode => _showDetails ? ColorDescriptionMode.All : ColorDescriptionMode.Main;
+    bool _showDetails = false;
+}

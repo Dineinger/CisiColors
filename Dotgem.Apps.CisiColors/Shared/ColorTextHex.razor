@@ -1,0 +1,13 @@
+﻿@using System.Drawing
+
+<div class="color-text">Hex: @GetHex(Color)</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public Color Color { get; set; }
+
+    public static string GetHex(Color color)
+    {
+        return $"#{(((uint)color.ToArgb()) - 0xff000000).ToString("X6")}";
+    }
+}

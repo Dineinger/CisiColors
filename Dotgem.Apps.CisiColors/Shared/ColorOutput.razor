@@ -1,0 +1,74 @@
+﻿@using System.Drawing
+
+<ColorField Color=@Color Mode="ColorFieldMode.Main">
+    <div>
+        @if (ColorDescriptionMode >= ColorDescriptionMode.OnlyName)
+        {
+            @if (Name is not null)
+            {
+                <div class="name">@Name</div>
+            }
+            @if (ColorDescriptionMode >= ColorDescriptionMode.Main)
+            {
+                <dív class="color-texts">
+                    <ColorTextHex Color=@context />
+                    <ColorTextRGB Color=@context />
+                </dív>
+            }
+        }
+    </div>
+    <div class="color-shades">
+        @{
+            var count = 6;
+        }
+        <div class="light-color-shades">
+            @for (int i = 0; i < count; i++)
+            {
+                <ColorField Color=@GetShadedColor(context, Color.White, i, count) Context="shadedColor">
+                    @if (ColorDescriptionMode >= ColorDescriptionMode.All)
+                    {
+                        <ColorTextHex Color=@shadedColor />
+                    }
+                </ColorField>                
+            }
+        </div>
+        <div class="dark-color-shades">
+            @for (int i = 0; i < count; i++)
+            {
+                <ColorField Color=@GetShadedColor(context, Color.Black, i, count) Context="shadedColor">
+                    @if (ColorDescriptionMode >= ColorDescriptionMode.All)
+                    {
+                        <ColorTextHex Color=@shadedColor />
+                    }
+                </ColorField>
+            }
+        </div>
+    </div>
+</ColorField>
+
+@code {
+    [Parameter, EditorRequired]
+    public Color Color { get; set; }
+
+    [Parameter]
+    public string? Name { get; set; }
+
+    [Parameter]
+    public ColorDescriptionMode ColorDescriptionMode { get; set; }
+
+    Color GetShadedColor(Color from, Color to, int stade, int max){
+        var from_r = from.R;
+        var from_g = from.G;
+        var from_b = from.B;
+        var to_r = to.R;
+        var to_g = to.G;
+        var to_b = to.B;
+        var diff_r = from_r - to_r;
+        var diff_g = from_g - to_g;
+        var diff_b = from_b - to_b;
+        var new_r = from_r - ((diff_r * stade) / max);
+        var new_g = from_g - ((diff_g * stade) / max);
+        var new_b = from_b - ((diff_b * stade) / max);
+        return Color.FromArgb(new_r, new_g, new_b);
+    }
+}

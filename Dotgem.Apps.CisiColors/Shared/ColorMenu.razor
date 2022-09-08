@@ -1,0 +1,27 @@
+﻿<div class="color-menu">
+    <button @onclick=@ToggleShowDetails>Details</button>
+</div>
+
+@code {
+    private bool __showDetails;
+    [Parameter]
+    public bool ShowDetails
+    {
+        get => __showDetails;
+        set {
+            var hasChanged = __showDetails != value;
+            __showDetails = value;
+            if (hasChanged) {
+                ShowDetailsChanged.InvokeAsync(value);
+            }
+        }
+    }
+
+    [Parameter]
+    public EventCallback<bool> ShowDetailsChanged { get; set; }
+
+    void ToggleShowDetails()
+    {
+        ShowDetails = !ShowDetails;
+    }
+}
