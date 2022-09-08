@@ -1,5 +1,5 @@
 ﻿.name {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     font-weight: 200;
     margin-bottom: 30px;
 }
@@ -9,6 +9,7 @@
 
 .color-shades {
     min-width: 100px;
+    min-height: 100px;
     display: flex;
     flex-direction: row;
 }
