@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Cisi Red",
+    "color": "ff0064"
+  },
+  {
+    "name": "Cisi Red Orange",
+    "color": "ff4443"
+  },
+  {
+    "name": "Cisi Orange",
+    "color": "ff8821"
+  },
+  {
+    "name": "Cisi Yellow",
+    "color": "ffcc00"
+  },
+  {
+    "name": "Cisi Green Yellow",
+    "color": "aad132"
+  },
+  {
+    "name": "Cisi Warm Green",
+    "color": "55d765"
+  },
+  {
+    "name": "Cisi Green",
+    "color": "00dc97"
+  },
+  {
+    "name": "Cisi Cyan",
+    "color": "00b4cb"
+  },
+  {
+    "name": "Cisi Blue",
+    "color": "008dff"
+  },
+  {
+    "name": "Cisi Blue Purple",
+    "color": "432dff"
+  },
+  {
+    "name": "Cisi Violet",
+    "color": "821ecb"
+  },
+  {
+    "name": "Cisi Red Violet",
+    "color": "c00f98"
+  }
+]
