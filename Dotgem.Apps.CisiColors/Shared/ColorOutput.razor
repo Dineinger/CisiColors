@@ -17,35 +17,9 @@
             }
         }
     </div>
-    <div class="color-shades">
-        @{
-            var start = 1;
-            var count = 6;
-            var endOffset = 1;
-        }
-        <div class="light-color-shades">
-            @for (int i = start; i < count - endOffset; i++)
-            {
-                <ColorField Color=@GetShadedColor(context, Color.White, i, count - 1) Context="shadedColor">
-                    @if (ColorDescriptionMode >= ColorDescriptionMode.All)
-                    {
-                        <ColorTextHex Color=@shadedColor WithDescription=false />
-                    }
-                </ColorField>                
-            }
-        </div>
-        <div class="dark-color-shades">
-            @for (int i = start; i < count - endOffset; i++)
-            {
-                <ColorField Color=@GetShadedColor(context, Color.Black, i, count - 1) Context="shadedColor">
-                    @if (ColorDescriptionMode >= ColorDescriptionMode.All)
-                    {
-                        <ColorTextHex Color=@shadedColor WithDescription=false />
-                    }
-                </ColorField>
-            }
-        </div>
-    </div>
+
+    <ColorShadesSW StartColor=@context ColorDescriptionMode=@ColorDescriptionMode />
+
 </ColorField>
 
 @code {
@@ -57,20 +31,4 @@
 
     [Parameter]
     public ColorDescriptionMode ColorDescriptionMode { get; set; }
-
-    Color GetShadedColor(Color from, Color to, int stade, int max){
-        var from_r = from.R;
-        var from_g = from.G;
-        var from_b = from.B;
-        var to_r = to.R;
-        var to_g = to.G;
-        var to_b = to.B;
-        var diff_r = from_r - to_r;
-        var diff_g = from_g - to_g;
-        var diff_b = from_b - to_b;
-        var new_r = from_r - ((diff_r * stade) / max);
-        var new_g = from_g - ((diff_g * stade) / max);
-        var new_b = from_b - ((diff_b * stade) / max);
-        return Color.FromArgb(new_r, new_g, new_b);
-    }
 }

@@ -1,0 +1,17 @@
+﻿.color-shades {
+    min-width: 100px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: row;
+}
+
+:is(.light-color-shades, .dark-color-shades) {
+    min-width: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+::deep :is(.light-color-shades, .dark-color-shades) > * {
+    height: 100%;
+    min-height: fit-content;
+}
