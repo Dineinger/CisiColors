@@ -2,11 +2,6 @@
 
 namespace Dotgem.Apps.CisiColors.Infrastructure;
 
-public interface IColorReader
-{
-    public Task<List<ColorDefinition>?> ReadCisiColorAsync()
-}
-
 public class ColorReaderHttp
 {
     private readonly HttpClient _http;
