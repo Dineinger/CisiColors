@@ -5,16 +5,12 @@
 </div>
 
 @code {
-    string Text => WithDescription ? $"Hex: {GetHex(Color)}" : GetHex(Color);
+    string Text => WithDescription ? $"Hex: {HexText}" : HexText;
+    string HexText => ColorFormater.GetHex(Color);
 
     [Parameter, EditorRequired]
     public Color Color { get; set; }
 
     [Parameter]
     public bool WithDescription { get; set; } = true;
-
-    public static string GetHex(Color color)
-    {
-        return $"#{(((uint)color.ToArgb()) - 0xff000000).ToString("X6")}";
-    }
 }

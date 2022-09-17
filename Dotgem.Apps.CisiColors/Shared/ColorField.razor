@@ -1,6 +1,6 @@
 ﻿@using System.Drawing
 
-<div class="color-field @CSS_IsLight @CSS_Mode" style="background-color: @ColorTextHex.GetHex(Color)">
+<div class="color-field @CSS_IsLight @CSS_Mode" style="background-color: @ColorFormater.GetHex(Color)">
     @ChildContent?.Invoke(Color)
 </div>
 

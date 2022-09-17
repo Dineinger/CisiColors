@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotgem.Apps.CisiColors", "D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotgem.Apps.CisiColors.Shared", "Dotgem.Apps.CisiColors.Shared\Dotgem.Apps.CisiColors.Shared.csproj", "{8F140E53-1484-4D6A-857C-D33EAD7E8238}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotgem.Apps.CisiColors.Infrastructure", "Dotgem.Apps.CisiColors.Infrastructure\Dotgem.Apps.CisiColors.Infrastructure.csproj", "{261D30BB-18F0-43AE-8553-0BC3BCCD12A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dotgem.Apps.CisiColors.Infrastructure", "Dotgem.Apps.CisiColors.Infrastructure\Dotgem.Apps.CisiColors.Infrastructure.csproj", "{261D30BB-18F0-43AE-8553-0BC3BCCD12A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5605F6CE-BE37-4C53-896A-3A93A5660276}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
