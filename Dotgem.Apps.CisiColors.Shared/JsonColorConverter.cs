@@ -1,9 +1,8 @@
-﻿using Dotgem.Apps.CisiColors.Shared;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Dotgem.Apps.CisiColors.Infrastructure;
+namespace Dotgem.Apps.CisiColors;
 
 internal class JsonColorConverter : JsonConverter<Color>
 {

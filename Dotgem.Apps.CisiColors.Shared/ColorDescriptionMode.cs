@@ -1,4 +1,4 @@
-﻿namespace Dotgem.Apps.CisiColors.Shared;
+﻿namespace Dotgem.Apps.CisiColors;
 
 public enum ColorDescriptionMode
 {
