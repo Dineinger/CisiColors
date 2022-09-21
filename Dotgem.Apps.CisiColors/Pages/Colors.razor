@@ -8,7 +8,7 @@
 
     <ColorMenu @bind-ShowDetails=@_showDetails />
 }
-else if (status.Found)
+else if (status.Known)
 {
     <p role="alert">The color list @Name is known, but couldn't be loaded'</p>
 }
@@ -23,7 +23,7 @@ else
 
     List<ColorDefinition>? Values { get; set; }
 
-    (bool Found, bool CouldLoad) status;
+    (bool Known, bool CouldLoad) status;
 
     protected override async Task OnParametersSetAsync()
     {
@@ -45,7 +45,6 @@ else
         Values = value;
         return (true, true);
     }
-
 
     ColorDescriptionMode _colorDescriptionMode => _showDetails ? ColorDescriptionMode.All : ColorDescriptionMode.Main;
     bool _showDetails = false;
