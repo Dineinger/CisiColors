@@ -1,0 +1,52 @@
+﻿@page "/colors/{name?}"
+@using Dotgem.Apps.CisiColors.Infrastructure
+@inject IColorReader ColorReader
+
+@if (status.CouldLoad)
+{
+    <ColorList Title=@Name Colors=@Values ColorDescriptionMode=@_colorDescriptionMode />
+
+    <ColorMenu @bind-ShowDetails=@_showDetails />
+}
+else if (status.Found)
+{
+    <p role="alert">The color list @Name is known, but couldn't be loaded'</p>
+}
+else
+{
+    <p>The color list @Name is not known</p>
+}
+
+@code {
+    [Parameter]
+    public string? Name { get; set; }
+
+    List<ColorDefinition>? Values { get; set; }
+
+    (bool Found, bool CouldLoad) status;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        status = Name switch
+        {
+            "cisi" or "cisi-colors" => await LoadColors(ColorReader.ReadCisiColorAsync),
+            _ => (false, false),
+        };
+    }
+
+    async Task<(bool Found, bool CouldLoad)> LoadColors(Func<Task<List<ColorDefinition>?>> getColors)
+    {
+        var value = await getColors();
+
+        if (value is null) {
+            return (true, false);
+        }
+
+        Values = value;
+        return (true, true);
+    }
+
+
+    ColorDescriptionMode _colorDescriptionMode => _showDetails ? ColorDescriptionMode.All : ColorDescriptionMode.Main;
+    bool _showDetails = false;
+}

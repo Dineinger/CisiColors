@@ -1,0 +1,18 @@
+﻿<PageTitle>@Title</PageTitle>
+
+<h2>@Title</h2>
+
+<Virtualize Items=@Colors>
+    <ColorOutput Color=@context.Color Name=@context.Name ColorDescriptionMode=@ColorDescriptionMode />
+</Virtualize>
+
+@code {
+    [Parameter]
+    public string Title { get; set; } = "Colors";
+
+    [Parameter]
+    public List<ColorDefinition> Colors { get; set; } = new();
+
+    [Parameter]
+    public ColorDescriptionMode ColorDescriptionMode { get; set; }
+}
