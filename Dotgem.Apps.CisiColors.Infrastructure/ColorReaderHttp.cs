@@ -16,6 +16,7 @@ public class ColorReaderHttp : IColorReader
     public Task<List<ColorDefinition>?> ReadCisiColorAsync()
     {
         var path = _paths.GetCisiPath();
+        var basePath = _http.BaseAddress;
         var colors = _http.GetFromJsonAsync<List<ColorDefinition>>(path);
         return colors;
     }
