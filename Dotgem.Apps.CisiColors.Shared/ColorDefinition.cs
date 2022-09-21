@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Text.Json.Serialization;
 
-namespace Dotgem.Apps.CisiColors;
+namespace Cisi.CisiColors;
 
 public class ColorDefinition
 {

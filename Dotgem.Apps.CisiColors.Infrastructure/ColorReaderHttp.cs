@@ -1,6 +1,6 @@
 ﻿using System.Net.Http.Json;
 
-namespace Dotgem.Apps.CisiColors.Infrastructure;
+namespace Cisi.CisiColors.Infrastructure;
 
 public class ColorReaderHttp : IColorReader
 {

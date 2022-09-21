@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace Dotgem.Apps.CisiColors.Infrastructure;
+namespace Cisi.CisiColors.Infrastructure;
 
 public class ColorReader : IColorReader
 {

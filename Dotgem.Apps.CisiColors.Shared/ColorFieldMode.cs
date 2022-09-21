@@ -1,6 +1,7 @@
-﻿namespace Dotgem.Apps.CisiColors;
-
-public enum ColorFieldMode
+﻿namespace Cisi.CisiColors
 {
-    Main,
+    public enum ColorFieldMode
+    {
+        Main,
+    }
 }

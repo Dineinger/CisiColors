@@ -4,10 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	<RootNamespace>Cisi.CisiColors</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Dotgem.Apps.CisiColors.Shared\Dotgem.Apps.CisiColors.Shared.csproj" />
-  </ItemGroup>
 
 </Project>

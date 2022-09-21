@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Dotgem.Apps.CisiColors;
+namespace Cisi.CisiColors;
 
 public static class ColorFormater
 {

@@ -1,4 +1,4 @@
-using Dotgem.Apps.CisiColors.Infrastructure;
+using Cisi.CisiColors.Infrastructure;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 

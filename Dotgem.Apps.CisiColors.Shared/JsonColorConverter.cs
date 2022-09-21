@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Dotgem.Apps.CisiColors;
+namespace Cisi.CisiColors;
 
 internal class JsonColorConverter : JsonConverter<Color>
 {
