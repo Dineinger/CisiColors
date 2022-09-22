@@ -1,0 +1,17 @@
+﻿<header>
+    @if (IsNavigationOpen)
+    {
+        @Navigation
+    }
+
+    <button @onclick=@ToggleNavigation>Listen</button>
+</header>
+
+@code {
+    [Parameter]
+    public RenderFragment? Navigation { get; set; }
+
+    private bool IsNavigationOpen = false;
+
+    void ToggleNavigation() => IsNavigationOpen = !IsNavigationOpen;
+}

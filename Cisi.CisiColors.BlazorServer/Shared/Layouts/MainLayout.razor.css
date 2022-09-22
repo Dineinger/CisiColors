@@ -1,0 +1,12 @@
+.page {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+main {
+    overflow-y: scroll;
+}
+
+@media (min-width: 641px) {
+}
