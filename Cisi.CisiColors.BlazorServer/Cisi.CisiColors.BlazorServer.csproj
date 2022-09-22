@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dotgem.Apps.CisiColors.Infrastructure\Cisi.CisiColors.Infrastructure.csproj" />
-    <ProjectReference Include="..\Dotgem.Apps.CisiColors.Shared\Cisi.CisiColors.Shared.csproj" />
+    <ProjectReference Include="..\Cisi.CisiColors.Infrastructure\Cisi.CisiColors.Infrastructure.csproj" />
+    <ProjectReference Include="..\Cisi.CisiColors.Shared\Cisi.CisiColors.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
