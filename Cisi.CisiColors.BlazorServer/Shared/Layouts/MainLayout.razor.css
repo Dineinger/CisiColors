@@ -1,7 +1,11 @@
 .page {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+main {
+    overflow-y: scroll;
 }
 
 @media (min-width: 641px) {
