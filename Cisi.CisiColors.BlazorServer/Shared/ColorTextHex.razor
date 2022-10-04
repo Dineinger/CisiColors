@@ -1,16 +1,11 @@
 ﻿@using System.Drawing
+@inherits ColorTextBase
 
 <div class="color-text">
     @Text
 </div>
 
 @code {
-    string Text => WithDescription ? $"Hex: {HexText}" : HexText;
-    string HexText => ColorFormater.GetHex(Color);
-
-    [Parameter, EditorRequired]
-    public Color Color { get; set; }
-
-    [Parameter]
-    public bool WithDescription { get; set; } = true;
+    public override Func<string> Description => () => ColorFormater.HEX_DESCRIPTION;
+    public override Func<Color, string> ColorAsString => ColorFormater.GetHex;
 }
