@@ -1,0 +1,10 @@
+﻿@inherits ColorTextBase
+
+<div class="color-text">
+    @Text
+</div>
+
+@code {
+    public override Func<Color, string> ColorAsString => ColorFormater.GetHSL;
+    public override Func<string> Description => () => "HSL";
+}

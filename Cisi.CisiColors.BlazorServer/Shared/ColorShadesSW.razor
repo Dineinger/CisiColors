@@ -1,9 +1,8 @@
-﻿@using System.Drawing
-<div class="color-shades">
+﻿<div class="color-shades">
     <div class="light-color-shades">
         @for (int i = CutFromStart; i < Count - CutFromEnd; i++)
         {
-            <ColorField Color=@GetShadedColor(StartColor, Color.White, i, Count - 1) Context="shadedColor">
+            <ColorField Color=@GetShadedColor(StartColor, System.Drawing.Color.White, i, Count - 1) Context="shadedColor">
                 @if (ColorDescriptionMode >= ColorDescriptionMode.All)
                 {
                     <ColorTextHex Color=@shadedColor WithDescription=false />
@@ -14,7 +13,7 @@
     <div class="dark-color-shades">
         @for (int i = CutFromStart; i < Count - CutFromEnd; i++)
         {
-            <ColorField Color=@GetShadedColor(StartColor, Color.Black, i, Count - 1) Context="shadedColor">
+            <ColorField Color=@GetShadedColor(StartColor, System.Drawing.Color.Black, i, Count - 1) Context="shadedColor">
                 @if (ColorDescriptionMode >= ColorDescriptionMode.All)
                 {
                     <ColorTextHex Color=@shadedColor WithDescription=false />
@@ -44,7 +43,7 @@
     {
         var diff = GetDifference(from, to);
 
-        return Color.FromArgb(
+        return Color.FromARGB(
             from.R - ((diff.R * index) / max),
             from.G - ((diff.G * index) / max),
             from.B - ((diff.B * index) / max)

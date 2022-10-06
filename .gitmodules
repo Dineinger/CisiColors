@@ -1,0 +1,4 @@
+[submodule "Dotgem"]
+	path = Dotgem
+	url = https://github.com/Dineinger/Dotgem
+	branch = color

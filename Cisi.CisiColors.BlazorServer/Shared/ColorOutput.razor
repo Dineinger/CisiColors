@@ -1,6 +1,4 @@
-﻿@using System.Drawing
-
-<ColorField Color=@Color Mode="ColorFieldMode.Main">
+﻿<ColorField Color=@Color Mode="ColorFieldMode.Main">
     <div>
         @if (ColorDescriptionMode >= ColorDescriptionMode.OnlyName)
         {
@@ -13,6 +11,7 @@
                 <dív class="color-texts">
                     <ColorTextHex Color=@context />
                     <ColorTextRGB Color=@context />
+                    <ColorTextHSL Color=@context />
                 </dív>
             }
         }
