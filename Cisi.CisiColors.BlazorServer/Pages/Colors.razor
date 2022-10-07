@@ -25,14 +25,11 @@ else
 
     protected override async Task OnParametersSetAsync()
     {
-        var colorReadingTask = Name switch
+        ColorReaderValue = Name switch
         {
-            "cisi" or "cisi-colors" => ColorReader.ReadCisiColorAsync(),
-            _ => null,
+            "cisi" or "cisi-colors" => await ColorReader.ReadCisiColorAsync(),
+            _ => ColorReaderValue.NotFound(),
         };
-
-        // end of method
-        ColorReaderValue = await ColorReader.LoadColorsAsync(colorReadingTask);
     }
 
     ColorDescriptionMode _colorDescriptionMode => _showDetails ? ColorDescriptionMode.All : ColorDescriptionMode.Main;

@@ -2,7 +2,7 @@
 
 namespace Cisi.CisiColors.Infrastructure;
 
-public class ColorReader : ColorReaderBase, IColorReader
+public sealed class ColorReader : ColorReaderBase, IColorReader
 {
     private readonly ColorPaths _paths;
 
@@ -11,10 +11,10 @@ public class ColorReader : ColorReaderBase, IColorReader
         _paths = paths;
     }
 
-    public override Task<List<ColorDefinition>?> ReadCisiColorAsync()
+    public override Task<ColorReaderValue> ReadCisiColorAsync()
     {
-        var path = _paths.GetCisiPath();
+        var path = _paths.CisiPath;
         var colors = JsonSerializer.DeserializeAsync<List<ColorDefinition>>(File.OpenRead(path));
-        return colors.AsTask();
+        return ColorReaderValue.From(colors);
     }
 }
