@@ -19,16 +19,18 @@ public readonly record struct ColorReaderValue(ColorReaderStatus Status, List<Co
     public static ColorReaderValue FoundNotLoaded() => new(ColorReaderStatus.FoundNotLoaded(), null);
     public static ColorReaderValue FoundAndLoaded(List<ColorDefinition> value) => new(ColorReaderStatus.FoundAndLoaded(), value);
     
-    public static async Task<ColorReaderValue> From(ValueTask<List<ColorDefinition>?> task)
+    public static async Task<ColorReaderValue> From(ValueTask<List<ColorDefinitionJsonModel>?> task)
     {
         var value = await task;
 
-        return value is null
+        return (value is null)
             ? FoundNotLoaded()
-            : FoundAndLoaded(value);
+            : FoundAndLoaded(
+                    value.Select(unverified => ColorDefinition.From(unverified)).ToList()
+                );
     }
     
-    public static async Task<ColorReaderValue> From(Task<List<ColorDefinition>?>? task)
+    public static async Task<ColorReaderValue> From(Task<List<ColorDefinitionJsonModel>?>? task)
     {
         if (task is null) return NotFound();
 
@@ -36,6 +38,8 @@ public readonly record struct ColorReaderValue(ColorReaderStatus Status, List<Co
 
         return value is null
             ? FoundNotLoaded()
-            : FoundAndLoaded(value);
+            : FoundAndLoaded(
+                    value.Select(unverified => ColorDefinition.From(unverified)).ToList()
+                );
     }
 }

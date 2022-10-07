@@ -17,7 +17,7 @@ public class ColorReaderHttp : ColorReaderBase, IColorReader
     public override Task<ColorReaderValue> ReadCisiColorAsync()
     {
         var path = _paths.CisiPath;
-        var colors = _http.GetFromJsonAsync<List<ColorDefinition>>(path);
+        var colors = _http.GetFromJsonAsync<List<ColorDefinitionJsonModel>>(path);
         return ColorReaderValue.From(colors);
     }
 }

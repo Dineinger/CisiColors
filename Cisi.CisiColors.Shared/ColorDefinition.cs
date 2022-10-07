@@ -1,27 +1,22 @@
-﻿using System.Drawing;
-using System.Text.Json.Serialization;
+﻿using Dotgem.Colors;
 
 namespace Cisi.CisiColors;
 
-public class ColorDefinition
+public sealed class ColorDefinition
 {
-    [JsonConstructor]
-    public ColorDefinition(Color color, string name)
+    private ColorDefinition(string name, Color color)
     {
         Name = name;
         Color = color;
     }
 
-    public ColorDefinition()
+    public string Name { get; }
+    public Color Color { get; }
+
+    public static ColorDefinition From(ColorDefinitionJsonModel unverified)
     {
-        Name = "[undefined";
+        // verification
+
+        return new ColorDefinition(unverified.Name, unverified.Color);
     }
-
-    [JsonPropertyName("name"), JsonPropertyOrder(0)]
-    public string Name { get; set; }
-
-    [JsonPropertyName("color"), JsonPropertyOrder(1)]
-    [JsonConverter(typeof(JsonColorConverter))]
-    public Color Color { get; set; }
-
 }
