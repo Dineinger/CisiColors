@@ -2,15 +2,15 @@
 
 public abstract class ColorReaderBase : IColorReader
 {
-    public async Task<((bool Found, bool CouldLoad), List<ColorDefinition>?)> LoadColorsAsync(Task<List<ColorDefinition>?>? getColors)
+    public async Task<ColorReaderValue> LoadColorsAsync(Task<List<ColorDefinition>?>? getColors)
     {
-        if (getColors is null) return ((false, false), null);
+        if (getColors is null) return ColorReaderValue.NotFound();
 
         var value = await getColors;
 
         return value is null
-            ? ((true, false), null)
-            : ((true, true), value);
+            ? ColorReaderValue.FoundNotLoaded()
+            : ColorReaderValue.FoundAndLoaded(value);
     }
 
     public abstract Task<List<ColorDefinition>?> ReadCisiColorAsync();
