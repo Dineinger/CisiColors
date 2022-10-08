@@ -2,7 +2,8 @@
 
 namespace Cisi.CisiColors.Infrastructure;
 
-public class ColorReaderHttp : IColorReader
+[Obsolete("This class must be tested before being used.")]
+public class ColorReaderHttp : ColorReaderBase, IColorReader
 {
     private readonly HttpClient _http;
     private readonly ColorPaths _paths;
@@ -13,11 +14,10 @@ public class ColorReaderHttp : IColorReader
         _paths = paths;
     }
 
-    public Task<List<ColorDefinition>?> ReadCisiColorAsync()
+    public override Task<ColorReaderValue> ReadCisiColorAsync()
     {
-        var path = _paths.GetCisiPath();
-        var basePath = _http.BaseAddress;
-        var colors = _http.GetFromJsonAsync<List<ColorDefinition>>(path);
-        return colors;
+        var path = _paths.CisiPath;
+        var colors = _http.GetFromJsonAsync<List<ColorDefinitionJsonModel>>(path);
+        return ColorReaderValue.From(colors);
     }
 }

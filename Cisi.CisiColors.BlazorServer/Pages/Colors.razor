@@ -2,15 +2,15 @@
 @using Cisi.CisiColors.Infrastructure
 @inject IColorReader ColorReader
 
-@if (status.CouldLoad)
+@if (ColorReaderValue.TryCouldLoad(out var value))
 {
-    <ColorList Title=@Name Colors=@Values ColorDescriptionMode=@_colorDescriptionMode />
+    <ColorList Title=@Name Colors=@value ColorDescriptionMode=@_colorDescriptionMode />
 
     <ColorMenu @bind-ShowDetails=@_showDetails />
 }
-else if (status.Known)
+else if (ColorReaderValue.Status.Found)
 {
-    <p role="alert">The color list @Name is known, but couldn't be loaded'</p>
+    <p role="alert">The color list @Name is known, but couldn't be loaded</p>
 }
 else
 {
@@ -21,29 +21,15 @@ else
     [Parameter]
     public string? Name { get; set; }
 
-    List<ColorDefinition>? Values { get; set; }
-
-    (bool Known, bool CouldLoad) status;
+    ColorReaderValue ColorReaderValue { get; set; }
 
     protected override async Task OnParametersSetAsync()
     {
-        status = Name switch
+        ColorReaderValue = Name switch
         {
-            "cisi" or "cisi-colors" => await LoadColors(ColorReader.ReadCisiColorAsync),
-            _ => (false, false),
+            "cisi" or "cisi-colors" => await ColorReader.ReadCisiColorAsync(),
+            _ => ColorReaderValue.NotFound(),
         };
-    }
-
-    async Task<(bool Found, bool CouldLoad)> LoadColors(Func<Task<List<ColorDefinition>?>> getColors)
-    {
-        var value = await getColors();
-
-        if (value is null) {
-            return (true, false);
-        }
-
-        Values = value;
-        return (true, true);
     }
 
     ColorDescriptionMode _colorDescriptionMode => _showDetails ? ColorDescriptionMode.All : ColorDescriptionMode.Main;

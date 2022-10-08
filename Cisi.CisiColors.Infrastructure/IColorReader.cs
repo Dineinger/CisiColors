@@ -2,5 +2,5 @@
 
 public interface IColorReader
 {
-    public Task<List<ColorDefinition>?> ReadCisiColorAsync();
+    public Task<ColorReaderValue> ReadCisiColorAsync();
 }

@@ -9,5 +9,5 @@ public class ColorPaths
         _basePath = basePath;
     }
 
-    public string GetCisiPath() => Path.Combine(_basePath, "cisi", "primary.json");
+    public string CisiPath => Path.Combine(_basePath, "cisi", "primary.json");
 }
