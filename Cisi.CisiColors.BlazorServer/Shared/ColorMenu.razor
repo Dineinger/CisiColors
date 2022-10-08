@@ -1,5 +1,14 @@
 ﻿<div class="color-menu">
-    <button @onclick=@ToggleShowDetails>Details</button>
+    <div class="button-menu">
+        <div class="button-list">
+            <button class="main" @onclick=@ToggleShowDetails>Details</button>
+            <div class="sub-button-list @(ShowDetails ? "open" : "closed")">
+                <button class="sub-button">Hex</button>
+                <button class="sub-button">RGB</button>
+                <button class="sub-button">HSL</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 @code {

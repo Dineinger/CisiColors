@@ -3,3 +3,53 @@
     bottom: 0;
     background-color: #000;
 }
+
+.button-menu {
+    width: fit-content;
+    padding: var(--button-margin);
+}
+
+.button-list {
+    display: flex;
+    background-color: hsl(0, 0%, 0%);
+    border-radius: 100px;
+    border: 1px solid white;
+    border-right: 2px solid white;
+}
+
+.button-menu button {
+    margin: 0;
+}
+
+.main {
+
+}
+
+.sub-button-list {
+    padding-left: 6px;
+}
+
+.sub-button-list .open {
+    display: inline;
+}
+
+.sub-button-list.closed {
+    display: none;
+}
+
+.sub-button {
+    position: relative;
+    color: #fff;
+    background-color: hsl(0, 0%, 0%);
+/*    border-right: 1px solid white;
+*/}
+
+.sub-button:not(:last-child)::after {
+    position: absolute;
+    content: '';
+    background-color: #808080;
+    width: 1px;
+    height: 60%;
+    top: 20%;
+    right: 0;
+}
