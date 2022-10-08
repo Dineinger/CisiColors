@@ -25,6 +25,18 @@ h1:focus {
     outline: none;
 }
 
+h1 {
+    font-size: 2.5rem;
+    font-weight: 200;
+    margin: 1rem 8px;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 1rem 8px;
+}
+
 a, .btn-link {
     color: #7db5dd;
 }
@@ -33,6 +45,16 @@ a, .btn-link {
     font-size: 1rem;
     font-weight: 500;
     letter-spacing: 1px;
+}
+
+.color-field .default {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-field .default .color-text {
+    line-height: 30px;
 }
 
 .color-shades .color-text {

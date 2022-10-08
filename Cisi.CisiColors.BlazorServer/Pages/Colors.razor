@@ -2,6 +2,8 @@
 @using Cisi.CisiColors.Infrastructure
 @inject IColorReader ColorReader
 
+<h1>Colors</h1>
+
 @if (ColorReaderValue.TryCouldLoad(out var value))
 {
     <ColorList Title=@Name Colors=@value ColorDescriptionMode=@_colorDescriptionMode />
