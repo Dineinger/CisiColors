@@ -47,6 +47,16 @@ a, .btn-link {
     letter-spacing: 1px;
 }
 
+.color-field .default {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-field .default .color-text {
+    line-height: 30px;
+}
+
 .color-shades .color-text {
     font-size: 0.8rem;
     font-weight: 400;
