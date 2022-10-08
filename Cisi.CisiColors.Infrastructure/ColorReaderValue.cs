@@ -2,9 +2,9 @@
 
 namespace Cisi.CisiColors.Infrastructure;
 
-public readonly record struct ColorReaderValue(ColorReaderStatus Status, List<ColorDefinition>? Value)
+public readonly record struct ColorReaderValue(ColorReaderStatus Status, ColorsCollection? Value)
 {
-    public bool TryCouldLoad([NotNullWhen(true)] out List<ColorDefinition>? value)
+    public bool TryCouldLoad([NotNullWhen(true)] out ColorsCollection? value)
     {
         if (Status.CouldLoad && Value is not null)
         {
@@ -17,17 +17,13 @@ public readonly record struct ColorReaderValue(ColorReaderStatus Status, List<Co
 
     public static ColorReaderValue NotFound() => new(ColorReaderStatus.NotFound(), null);
     public static ColorReaderValue FoundNotLoaded() => new(ColorReaderStatus.FoundNotLoaded(), null);
-    public static ColorReaderValue FoundAndLoaded(List<ColorDefinition> value) => new(ColorReaderStatus.FoundAndLoaded(), value);
-    
+    public static ColorReaderValue FoundAndLoaded(ColorsCollection value) => new(ColorReaderStatus.FoundAndLoaded(), value);
+
     public static async Task<ColorReaderValue> From(ValueTask<List<ColorDefinitionJsonModel>?> task)
     {
         var value = await task;
 
-        return (value is null)
-            ? FoundNotLoaded()
-            : FoundAndLoaded(
-                    value.Select(unverified => ColorDefinition.From(unverified)).ToList()
-                );
+        return From(value);
     }
     
     public static async Task<ColorReaderValue> From(Task<List<ColorDefinitionJsonModel>?>? task)
@@ -36,10 +32,13 @@ public readonly record struct ColorReaderValue(ColorReaderStatus Status, List<Co
 
         var value = await task;
 
-        return value is null
+        return From(value);
+    }
+
+    public static ColorReaderValue From(List<ColorDefinitionJsonModel>? value) =>
+        value is null
             ? FoundNotLoaded()
             : FoundAndLoaded(
-                    value.Select(unverified => ColorDefinition.From(unverified)).ToList()
+                    ColorsCollection.From(value)
                 );
-    }
 }

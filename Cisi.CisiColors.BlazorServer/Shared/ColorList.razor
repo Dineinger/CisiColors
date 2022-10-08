@@ -11,7 +11,7 @@
     public string Title { get; set; } = "Colors";
 
     [Parameter]
-    public List<ColorDefinition> Colors { get; set; } = new();
+    public ColorsCollection Colors { get; set; } = ColorsCollection.Empty();
 
     [Parameter]
     public ColorDescriptionMode ColorDescriptionMode { get; set; }
