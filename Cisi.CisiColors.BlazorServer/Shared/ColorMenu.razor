@@ -53,15 +53,8 @@
         ShowDetails = !ShowDetails;
     }
 
-    void ToggleDetails(ColorDetails.ColorDetail detail)
+    void ToggleDetails(ColorDetail detail)
     {
-        if (ColorDetails.Is(detail))
-        {
-            ColorDetails -= detail;
-        }
-        else
-        {
-            ColorDetails += detail;
-        } 
+        ColorDetails = ColorDetails.ToggleValue(detail);
     }
 }

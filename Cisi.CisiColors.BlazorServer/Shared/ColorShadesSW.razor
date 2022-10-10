@@ -5,15 +5,15 @@
             <ColorField Color=@GetShadedColor(StartColor, System.Drawing.Color.White, i, Count - 1) Context="shadedColor">
                 @if (ColorDescriptionMode >= ColorDescriptionMode.All)
                 {
-                    @if (ColorDetails.IsHEX)
+                    @if (ColorDetails.IsHexOn)
                     {
                         <ColorTextHex Color=@shadedColor WithDescription=false />
                     }
-                    @if (ColorDetails.IsRGB)
+                    @if (ColorDetails.IsRgbOn)
                     {
                         <ColorTextRGB Color=@shadedColor WithDescription=false />
                     }
-                    @if (ColorDetails.IsHSL)
+                    @if (ColorDetails.IsHslOn)
                     {
                         <ColorTextHSL Color=@shadedColor WithDescription=false />
                     }
@@ -27,15 +27,15 @@
             <ColorField Color=@GetShadedColor(StartColor, System.Drawing.Color.Black, i, Count - 1) Context="shadedColor">
                 @if (ColorDescriptionMode >= ColorDescriptionMode.All)
                 {
-                    @if (ColorDetails.IsHEX)
+                    @if (ColorDetails.IsHexOn)
                     {
                         <ColorTextHex Color=@shadedColor WithDescription=false />
                     }
-                    @if (ColorDetails.IsRGB)
+                    @if (ColorDetails.IsRgbOn)
                     {
                         <ColorTextRGB Color=@shadedColor WithDescription=false />
                     }
-                    @if (ColorDetails.IsHSL)
+                    @if (ColorDetails.IsHslOn)
                     {
                         <ColorTextHSL Color=@shadedColor WithDescription=false />
                     }
