@@ -20,6 +20,11 @@ public struct ColorDetails
         return (_value & detail.Value) == detail.Value;
     }
 
+    public bool IsAnyOn()
+    {
+        return _value != ColorDetail.Default.Value;
+    }
+
     public static ColorDetail HEX => ColorDetail.HEX;
     public static ColorDetail RGB => ColorDetail.RGB;
     public static ColorDetail HSL => ColorDetail.HSL;

@@ -51,6 +51,10 @@
     void ToggleShowDetails()
     {
         ShowDetails = !ShowDetails;
+        if (ShowDetails && !ColorDetails.IsAnyOn())
+        {
+            ToggleDetails(ColorDetail.HEX);
+        }
     }
 
     void ToggleDetails(ColorDetail detail)
