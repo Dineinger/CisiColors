@@ -2,9 +2,11 @@
 
 <h2>@Title</h2>
 
-<Virtualize Items=@Colors>
-    <ColorOutput Color=@context.Color Name=@context.Name ColorDescriptionMode=@ColorDescriptionMode />
-</Virtualize>
+<CascadingValue Value=@ColorDetails Name="ColorDetails">
+    <Virtualize Items=@Colors>
+        <ColorOutput Color=@context.Color Name=@context.Name ColorDescriptionMode=@ColorDescriptionMode />
+    </Virtualize>
+</CascadingValue>
 
 @code {
     [Parameter]
@@ -15,4 +17,7 @@
 
     [Parameter]
     public ColorDescriptionMode ColorDescriptionMode { get; set; }
+
+    [Parameter]
+    public ColorDetails ColorDetails { get; set; } = new();
 }

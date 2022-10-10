@@ -1,11 +1,15 @@
-﻿<div class="color-menu">
+﻿@using Cisi.CisiColors.BlazorServer.ViewState
+<div class="color-menu">
     <div class="button-menu">
         <div class="button-list">
             <button class="main" @onclick=@ToggleShowDetails>Details</button>
             <div class="sub-button-list @(ShowDetails ? "open" : "closed")">
-                <button class="sub-button">Hex</button>
-                <button class="sub-button">RGB</button>
-                <button class="sub-button">HSL</button>
+                <button class="sub-button"
+                        @onclick=@(() => ToggleDetails(ColorDetails.HEX))> Hex </button>
+                <button class="sub-button"
+                        @onclick=@(() => ToggleDetails(ColorDetails.RGB))>RGB</button>
+                <button class="sub-button"
+                        @onclick=@(() => ToggleDetails(ColorDetails.HSL))>HSL</button>
             </div>
         </div>
     </div>
@@ -26,11 +30,38 @@
         }
     }
 
+    private ColorDetails __colorDetails;
+    [Parameter]
+    public ColorDetails ColorDetails
+    {
+        get => __colorDetails;
+        set {
+            if (__colorDetails == value) return;
+            __colorDetails = value;
+            ColorDetailsChanged.InvokeAsync(value);
+        }
+    }
+
+    [Parameter]
+    public EventCallback<ColorDetails> ColorDetailsChanged { get; set; }
+
     [Parameter]
     public EventCallback<bool> ShowDetailsChanged { get; set; }
 
     void ToggleShowDetails()
     {
         ShowDetails = !ShowDetails;
+    }
+
+    void ToggleDetails(ColorDetails.ColorDetail detail)
+    {
+        if (ColorDetails.Is(detail))
+        {
+            ColorDetails -= detail;
+        }
+        else
+        {
+            ColorDetails += detail;
+        } 
     }
 }

@@ -1,4 +1,5 @@
 ﻿@page "/colors/{name?}"
+@using Cisi.CisiColors.BlazorServer.ViewState
 @using Cisi.CisiColors.Infrastructure
 @inject IColorReader ColorReader
 
@@ -6,9 +7,9 @@
 
 @if (ColorReaderValue.TryCouldLoad(out var value))
 {
-    <ColorList Title=@Name Colors=@value ColorDescriptionMode=@_colorDescriptionMode />
+    <ColorList Title=@Name Colors=@value ColorDescriptionMode=@_colorDescriptionMode ColorDetails=@_colorDetails />
 
-    <ColorMenu @bind-ShowDetails=@_showDetails />
+    <ColorMenu @bind-ShowDetails=@_showDetails @bind-ColorDetails=@_colorDetails />
 }
 else if (ColorReaderValue.Status.Found)
 {
@@ -36,4 +37,6 @@ else
 
     ColorDescriptionMode _colorDescriptionMode => _showDetails ? ColorDescriptionMode.All : ColorDescriptionMode.Main;
     bool _showDetails = false;
+
+    ColorDetails _colorDetails = new();
 }
