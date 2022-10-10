@@ -3,21 +3,10 @@
         @for (int i = CutFromStart; i < Count - CutFromEnd; i++)
         {
             <ColorField Color=@GetShadedColor(StartColor, System.Drawing.Color.White, i, Count - 1) Context="shadedColor">
-                @if (ColorDescriptionMode >= ColorDescriptionMode.All)
-                {
-                    @if (ColorDetails.IsHexOn)
-                    {
-                        <ColorTextHex Color=@shadedColor WithDescription=false />
-                    }
-                    @if (ColorDetails.IsRgbOn)
-                    {
-                        <ColorTextRGB Color=@shadedColor WithDescription=false />
-                    }
-                    @if (ColorDetails.IsHslOn)
-                    {
-                        <ColorTextHSL Color=@shadedColor WithDescription=false />
-                    }
-                }
+                <ColorShadeDescriptionDetails
+                    Color=@shadedColor
+                    ColorDetails=ColorDetails
+                    ColorDescriptionMode=@ColorDescriptionMode />
             </ColorField>
         }
     </div>
@@ -25,21 +14,10 @@
         @for (int i = CutFromStart; i < Count - CutFromEnd; i++)
         {
             <ColorField Color=@GetShadedColor(StartColor, System.Drawing.Color.Black, i, Count - 1) Context="shadedColor">
-                @if (ColorDescriptionMode >= ColorDescriptionMode.All)
-                {
-                    @if (ColorDetails.IsHexOn)
-                    {
-                        <ColorTextHex Color=@shadedColor WithDescription=false />
-                    }
-                    @if (ColorDetails.IsRgbOn)
-                    {
-                        <ColorTextRGB Color=@shadedColor WithDescription=false />
-                    }
-                    @if (ColorDetails.IsHslOn)
-                    {
-                        <ColorTextHSL Color=@shadedColor WithDescription=false />
-                    }
-                }
+                <ColorShadeDescriptionDetails
+                    Color=@shadedColor
+                    ColorDetails=ColorDetails
+                    ColorDescriptionMode=@ColorDescriptionMode />
             </ColorField>
         }
     </div>
