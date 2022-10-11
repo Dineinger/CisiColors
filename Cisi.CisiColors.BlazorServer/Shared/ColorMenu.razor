@@ -4,11 +4,11 @@
         <div class="button-list">
             <button class="main" @onclick=@ToggleShowDetails>Details</button>
             <div class="sub-button-list @(ShowDetails ? "open" : "closed")">
-                <button class="sub-button"
-                        @onclick=@(() => ToggleDetails(ColorDetail.HEX))> Hex </button>
-                <button class="sub-button"
+                <button class=@GetCSSClassForButton(ColorDetails.IsHexOn)
+                        @onclick=@(() => ToggleDetails(ColorDetail.HEX))>Hex</button>
+                <button class=@GetCSSClassForButton(ColorDetails.IsRgbOn)
                         @onclick=@(() => ToggleDetails(ColorDetail.RGB))>RGB</button>
-                <button class="sub-button"
+                <button class=@GetCSSClassForButton(ColorDetails.IsHslOn)
                         @onclick=@(() => ToggleDetails(ColorDetail.HSL))>HSL</button>
             </div>
         </div>
@@ -61,4 +61,8 @@
     {
         ColorDetails = ColorDetails.ToggleValue(detail);
     }
+
+    const string _subButton = "sub-button";
+    const string _subButtonSelected = "sub-button selected";
+    string GetCSSClassForButton(bool isOn) => isOn ? _subButtonSelected : _subButton;
 }

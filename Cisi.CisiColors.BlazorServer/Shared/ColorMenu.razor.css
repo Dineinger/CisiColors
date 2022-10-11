@@ -13,24 +13,23 @@
     display: flex;
     background-color: hsl(0, 0%, 0%);
     border-radius: 100px;
-    border: 1px solid white;
+    border: 2px solid white;
     border-right: 2px solid white;
 }
 
-.button-menu button {
-    margin: 0;
-}
-
 .main {
-
+    margin: 0;
+    line-height: 0.9rem;
+    font-size: 0.9rem;
+    padding: 10px;
 }
 
 .sub-button-list {
     padding-left: 6px;
 }
 
-.sub-button-list .open {
-    display: inline;
+.sub-button-list.open {
+    display: flex;
 }
 
 .sub-button-list.closed {
@@ -41,15 +40,14 @@
     position: relative;
     color: #fff;
     background-color: hsl(0, 0%, 0%);
-/*    border-right: 1px solid white;
-*/}
+    line-height: 0.675rem;
+    font-size: 0.675rem;
+    margin: 5px;
+    padding: 5px 10px;
+    border: 2px solid white;
+}
 
-.sub-button:not(:last-child)::after {
-    position: absolute;
-    content: '';
-    background-color: #808080;
-    width: 1px;
-    height: 60%;
-    top: 20%;
-    right: 0;
+.sub-button.selected {
+    background-color: white;
+    color: black;
 }
