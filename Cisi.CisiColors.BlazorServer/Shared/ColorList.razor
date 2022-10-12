@@ -2,11 +2,14 @@
 
 <h2>@Title</h2>
 
-<CascadingValue Value=@ColorDetails Name="ColorDetails">
-    <Virtualize Items=@Colors>
-        <ColorOutput Color=@context.Color Name=@context.Name ColorDescriptionMode=@ColorDescriptionMode />
-    </Virtualize>
-</CascadingValue>
+<div class="list-of-color">
+    <CascadingValue Value=@ColorDetails Name="ColorDetails">
+        @foreach (var color in Colors)
+        {
+            <ColorOutput Color=@color.Color Name=@color.Name ColorDescriptionMode=@ColorDescriptionMode />           
+        }
+    </CascadingValue>
+</div>
 
 @code {
     [Parameter]

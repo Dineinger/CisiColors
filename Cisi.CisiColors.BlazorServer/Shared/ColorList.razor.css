@@ -1,0 +1,18 @@
+﻿.list-of-color {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(400px, auto));
+    width: fit-content;
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 900px) {
+    .list-of-color {
+        grid-template-columns: repeat(2, minmax(400px, auto));
+    }
+}
+
+@media only screen and (min-width: 1300px) {
+    .list-of-color {
+        grid-template-columns: repeat(3, minmax(400px, auto));
+    }
+}
