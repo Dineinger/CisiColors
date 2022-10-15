@@ -43,6 +43,11 @@ a, .btn-link {
     color: #7db5dd;
 }
 
+.center {
+    width: fit-content;
+    margin: 0 auto;
+}
+
 .color-text {
     font-size: 1rem;
     font-weight: 500;

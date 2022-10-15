@@ -3,22 +3,24 @@
 @using Cisi.CisiColors.Infrastructure
 @inject IColorReader ColorReader
 
-<h1>Colors</h1>
+<div class="center">
+    <h1>Colors</h1>
 
-@if (ColorReaderValue.TryCouldLoad(out var value))
-{
-    <ColorList Title=@Name Colors=@value ColorDescriptionMode=@_colorDescriptionMode ColorDetails=@_colorDetails />
+    @if (ColorReaderValue.TryCouldLoad(out var value))
+    {
+        <ColorList Title=@Name Colors=@value ColorDescriptionMode=@_colorDescriptionMode ColorDetails=@_colorDetails />
 
-    <ColorMenu @bind-ShowDetails=@_showDetails @bind-ColorDetails=@_colorDetails />
-}
-else if (ColorReaderValue.Status.Found)
-{
-    <p role="alert">The color list @Name is known, but couldn't be loaded</p>
-}
-else
-{
-    <p>The color list @Name is not known</p>
-}
+        <ColorMenu @bind-ShowDetails=@_showDetails @bind-ColorDetails=@_colorDetails />
+    }
+    else if (ColorReaderValue.Status.Found)
+    {
+        <p role="alert">The color list @Name is known, but couldn't be loaded</p>
+    }
+    else
+    {
+        <p>The color list @Name is not known</p>
+    }
+</div>
 
 @code {
     [Parameter]
