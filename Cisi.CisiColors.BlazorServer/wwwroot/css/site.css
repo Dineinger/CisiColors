@@ -8,6 +8,7 @@ html, body {
     box-sizing: border-box;
     background-color: #000;
     color: #fff;
+    --button-margin: 6px;
 }
 
 button {
@@ -15,10 +16,11 @@ button {
     background-color: #fff;
     border: none;
     border-radius: 100px;
-    margin: 6px;
+    margin: var(--button-margin);
     padding: 10px;
     width: fit-content;
     cursor: pointer;
+    font-size: 0.9rem;
 }
 
 h1:focus {
@@ -41,6 +43,11 @@ a, .btn-link {
     color: #7db5dd;
 }
 
+.center {
+    width: fit-content;
+    margin: 0 auto;
+}
+
 .color-text {
     font-size: 1rem;
     font-weight: 500;
@@ -58,8 +65,15 @@ a, .btn-link {
 }
 
 .color-shades .color-text {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 400;
+}
+
+@media only screen and (min-width: 500px) {
+    .color-shades .color-text {
+        font-size: 0.8rem;
+        font-weight: 400;
+    }
 }
 
 .btn-primary {

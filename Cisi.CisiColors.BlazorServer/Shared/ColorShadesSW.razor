@@ -3,10 +3,10 @@
         @for (int i = CutFromStart; i < Count - CutFromEnd; i++)
         {
             <ColorField Color=@GetShadedColor(StartColor, System.Drawing.Color.White, i, Count - 1) Context="shadedColor">
-                @if (ColorDescriptionMode >= ColorDescriptionMode.All)
-                {
-                    <ColorTextHex Color=@shadedColor WithDescription=false />
-                }
+                <ColorShadeDescriptionDetails
+                    Color=@shadedColor
+                    ColorDetails=ColorDetails
+                    ColorDescriptionMode=@ColorDescriptionMode />
             </ColorField>
         }
     </div>
@@ -14,10 +14,10 @@
         @for (int i = CutFromStart; i < Count - CutFromEnd; i++)
         {
             <ColorField Color=@GetShadedColor(StartColor, System.Drawing.Color.Black, i, Count - 1) Context="shadedColor">
-                @if (ColorDescriptionMode >= ColorDescriptionMode.All)
-                {
-                    <ColorTextHex Color=@shadedColor WithDescription=false />
-                }
+                <ColorShadeDescriptionDetails
+                    Color=@shadedColor
+                    ColorDetails=ColorDetails
+                    ColorDescriptionMode=@ColorDescriptionMode />
             </ColorField>
         }
     </div>
@@ -29,6 +29,9 @@
 
     [Parameter]
     public ColorDescriptionMode ColorDescriptionMode { get; set; }
+
+    [CascadingParameter(Name = "ColorDetails")]
+    public ColorDetails ColorDetails { get; set; } = new();
 
     [Parameter]
     public int CutFromStart { get; set; } = 1;

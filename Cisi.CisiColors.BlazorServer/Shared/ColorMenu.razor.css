@@ -3,3 +3,51 @@
     bottom: 0;
     background-color: #000;
 }
+
+.button-menu {
+    width: fit-content;
+    padding: var(--button-margin);
+}
+
+.button-list {
+    display: flex;
+    background-color: hsl(0, 0%, 0%);
+    border-radius: 100px;
+    border: 2px solid white;
+    border-right: 2px solid white;
+}
+
+.main {
+    margin: 0;
+    line-height: 0.9rem;
+    font-size: 0.9rem;
+    padding: 10px;
+}
+
+.sub-button-list {
+    padding-left: 6px;
+}
+
+.sub-button-list.open {
+    display: flex;
+}
+
+.sub-button-list.closed {
+    display: none;
+}
+
+.sub-button {
+    position: relative;
+    color: #fff;
+    background-color: hsl(0, 0%, 0%);
+    line-height: 0.675rem;
+    font-size: 0.675rem;
+    margin: 5px;
+    padding: 5px 10px;
+    border: 2px solid white;
+}
+
+.sub-button.selected {
+    background-color: white;
+    color: black;
+}
