@@ -6,7 +6,7 @@ namespace Cisi.CisiColors.Infrastructure.DB
     {
         Task<List<ColorModel>> GetAllColorsAsync();
         List<ColorModel> GetAllColors();
-        Task<List<ColorCollectionAndStatus>> GetAllColorCollectionsAsync();
-        List<ColorCollectionAndStatus> GetAllColorCollections();
+        Task<IReadOnlyList<ColorCollectionAndStatus>> GetAllColorCollectionsAsync();
+        IReadOnlyList<ColorCollectionAndStatus> GetAllColorCollections();
     }
 }

@@ -8,8 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddCisiColorDatabaseServices();
-builder.Services.AddSingleton(_ => new ColorPaths("colors"));
-builder.Services.AddScoped<IColorReader, ColorReader>();
 
 var app = builder.Build();
 

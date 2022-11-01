@@ -18,12 +18,6 @@ public sealed class ColorsCollection : ICollection<ColorDefinition>
 
     public bool IsReadOnly => ((ICollection<ColorDefinition>)_values).IsReadOnly;
 
-    [Obsolete]
-    public static ColorsCollection From(List<ColorDefinitionJsonModel> unverifiedList, string? title = null)
-    {
-        return new ColorsCollection(title, unverifiedList.Select(unverified => ColorDefinition.From(unverified)).ToList());
-    }
-
     public static ColorsCollection From(string title, List<ColorDefinition> list)
     {
         return new ColorsCollection(title, list);

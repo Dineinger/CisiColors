@@ -7,22 +7,10 @@ using MongoDB.Driver;
 
 namespace Cisi.CisiColors.Infrastructure.DB;
 
-internal static class IConfigurationExtentions
-{
-    public static string GetDatabase(this IConfiguration config, string dbName)
-    {
-        return config.GetSection("Databases").GetSection(dbName).Value;
-    }
-
-    public static string GetDBCollection(this IConfiguration config, string collectionName)
-    {
-        return config.GetSection("Databases").GetSection("Collections").GetSection(collectionName).Value;
-    }
-}
-
 public sealed class ColorDataAccess : IColorDataAccess
 {
     private readonly IConfiguration _config;
+
     private readonly string _connectionString;
     private readonly string _databaseName;
     private readonly string _colors_collectionName;
@@ -55,28 +43,31 @@ public sealed class ColorDataAccess : IColorDataAccess
         return allItems.ToList();
     }
 
-    public async Task<List<ColorCollectionAndStatus>> GetAllColorCollectionsAsync()
+    public async Task<IReadOnlyList<ColorCollectionAndStatus>> GetAllColorCollectionsAsync()
     {
         var allItems = await _colorCollectionsCollection.FindAsync(_ => true);
 
         return CreateListOfColorcollectionAndStatus(allItems.ToList());
     }
 
-    public List<ColorCollectionAndStatus> GetAllColorCollections()
+    public IReadOnlyList<ColorCollectionAndStatus> GetAllColorCollections()
     {
         var allItems = _colorCollectionsCollection.Find(_ => true);
 
         return CreateListOfColorcollectionAndStatus(allItems.ToList());
     }
 
-    private static List<ColorCollectionAndStatus> CreateListOfColorcollectionAndStatus(List<ColorCollectionModel> list)
+    private static IReadOnlyList<ColorCollectionAndStatus> CreateListOfColorcollectionAndStatus(List<ColorCollectionModel> list)
     {
-        return list
-            .Select(c =>
-                (c.Title, c.Colors?.Select(color => new ColorDefinition(color.Name, Color.FromARGB(color.R, color.G, color.B))))
-            )
-            .Select(c => ColorsCollection.From(c.Item1 ?? "unknown", c.Item2?.ToList() ?? new()))
-            .Select(c => ColorCollectionAndStatus.FoundAndLoaded(c)).ToList();
+        var preColorCollections = list.Select(c => new PreColorCollection(c.Id, c.Title, c.Description,
+            c.Colors?.Select(color => new ColorDefinition(
+                color.Id ?? ObjectId.GenerateNewId().ToString(),
+                color.Name ?? "unknown",
+                Color.FromARGB(color.R, color.G, color.B)))
+        ));
+        var colorCollections = preColorCollections.Select(c => ColorsCollection.From(c.Title ?? "unknown", c.Colors?.ToList() ?? new()));
+        var colorCollectionAndStatus = colorCollections.Select(c => ColorCollectionAndStatus.FoundAndLoaded(c));
+        return colorCollectionAndStatus.ToList();
     }
 
     private IMongoCollection<T> CreateCollectionReference<T>(string collectionName)
