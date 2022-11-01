@@ -4,19 +4,14 @@ namespace Cisi.CisiColors;
 
 public sealed class ColorDefinition
 {
-    private ColorDefinition(string name, Color color)
+    public ColorDefinition(string id, string name, Color color)
     {
+        Id = id;
         Name = name;
         Color = color;
     }
 
+    public string Id { get; }
     public string Name { get; }
     public Color Color { get; }
-
-    public static ColorDefinition From(ColorDefinitionJsonModel unverified)
-    {
-        // verification
-
-        return new ColorDefinition(unverified.Name, unverified.Color);
-    }
 }

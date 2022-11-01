@@ -1,7 +1,8 @@
 ﻿@page "/colors/{name?}"
 @using Cisi.CisiColors.BlazorServer.ViewState
 @using Cisi.CisiColors.Infrastructure
-@inject IColorReader ColorReader
+@using Cisi.CisiColors.Infrastructure.DB
+@inject IColorDataAccess DB
 
 <div class="center">
     <h1>Colors</h1>
@@ -26,14 +27,14 @@
     [Parameter]
     public string? Name { get; set; }
 
-    ColorReaderValue ColorReaderValue { get; set; }
+    ColorCollectionAndStatus ColorReaderValue { get; set; }
 
     protected override async Task OnParametersSetAsync()
     {
         ColorReaderValue = Name switch
         {
-            "cisi" or "cisi-colors" => await ColorReader.ReadCisiColorAsync(),
-            _ => ColorReaderValue.NotFound(),
+            "cisi" or "cisi-colors" => (await DB.GetAllColorCollectionsAsync()).FirstOrDefault(x => x.Value?.Title == "Cisi Rainbow"),
+            _ => ColorCollectionAndStatus.NotFound(),
         };
     }
 

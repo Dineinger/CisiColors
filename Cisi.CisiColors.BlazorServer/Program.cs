@@ -7,8 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton(_ => new ColorPaths("colors"));
-builder.Services.AddScoped<IColorReader, ColorReader>();
+builder.Services.AddCisiColorDatabaseServices();
 
 var app = builder.Build();
 
