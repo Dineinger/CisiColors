@@ -2,5 +2,5 @@
 
 public abstract class ColorReaderBase : IColorReader
 {
-    public abstract Task<ColorReaderValue> ReadCisiColorAsync();
+    public abstract Task<ColorCollectionAndStatus> ReadCisiColorAsync();
 }

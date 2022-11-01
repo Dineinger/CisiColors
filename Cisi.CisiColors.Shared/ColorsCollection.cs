@@ -6,23 +6,32 @@ public sealed class ColorsCollection : ICollection<ColorDefinition>
 {
     private readonly List<ColorDefinition> _values;
 
-    private ColorsCollection(List<ColorDefinition> values)
+    private ColorsCollection(string? title, List<ColorDefinition> values)
     {
         _values = values;
+        Title = title;
     }
+
+    public string? Title { get; }
 
     public int Count => _values.Count;
 
     public bool IsReadOnly => ((ICollection<ColorDefinition>)_values).IsReadOnly;
 
-    public static ColorsCollection From(List<ColorDefinitionJsonModel> unverifiedList)
+    [Obsolete]
+    public static ColorsCollection From(List<ColorDefinitionJsonModel> unverifiedList, string? title = null)
     {
-        return new ColorsCollection(unverifiedList.Select(unverified => ColorDefinition.From(unverified)).ToList());
+        return new ColorsCollection(title, unverifiedList.Select(unverified => ColorDefinition.From(unverified)).ToList());
+    }
+
+    public static ColorsCollection From(string title, List<ColorDefinition> list)
+    {
+        return new ColorsCollection(title, list);
     }
 
     public static ColorsCollection Empty()
     {
-        return new(new List<ColorDefinition>());
+        return new("unknown", new List<ColorDefinition>());
     }
 
     public void Add(ColorDefinition item)

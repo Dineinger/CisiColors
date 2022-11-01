@@ -11,10 +11,10 @@ public sealed class ColorReader : ColorReaderBase, IColorReader
         _paths = paths;
     }
 
-    public override Task<ColorReaderValue> ReadCisiColorAsync()
+    public override Task<ColorCollectionAndStatus> ReadCisiColorAsync()
     {
         var path = _paths.CisiPath;
         var colors = JsonSerializer.DeserializeAsync<List<ColorDefinitionJsonModel>>(File.OpenRead(path));
-        return ColorReaderValue.From(colors);
+        return ColorCollectionAndStatus.From(colors);
     }
 }

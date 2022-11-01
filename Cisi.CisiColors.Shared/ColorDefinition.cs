@@ -4,7 +4,7 @@ namespace Cisi.CisiColors;
 
 public sealed class ColorDefinition
 {
-    private ColorDefinition(string name, Color color)
+    public ColorDefinition(string name, Color color)
     {
         Name = name;
         Color = color;
