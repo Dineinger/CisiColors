@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Cisi.CisiColors.Infrastructure\Cisi.CisiColors.Infrastructure.csproj" />
     <ProjectReference Include="..\Cisi.CisiColors.Shared\Cisi.CisiColors.Shared.csproj" />
+    <ProjectReference Include="..\Dotgem.Blazor.Essentials\Dotgem.Blazor.Essentials.csproj" />
   </ItemGroup>
 
   <ItemGroup>

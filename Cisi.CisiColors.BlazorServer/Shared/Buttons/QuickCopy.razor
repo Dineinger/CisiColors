@@ -1,5 +1,8 @@
 ﻿@using System.Diagnostics.CodeAnalysis
-<button class="copy-button" title="copy">
+@using Dotgem.Blazor.Essentials
+@inject ICopyToClipboardService CopyService
+
+<button class="copy-button" title="copy" @onclick=@CopyValue>
     @if (success)
     {
         <svg viewBox="0 0 53 50">
@@ -25,4 +28,15 @@
     private string CSS_NeedLight => needLight ? "light" : "dark";
 
     bool success = false;
+
+    async Task CopyValue()
+    {
+        if (ValueToCopy is null)
+        {
+            return;
+        }
+
+        await CopyService.CopyToClipboardAsync(ValueToCopy);
+        success = true;
+    }
 }
