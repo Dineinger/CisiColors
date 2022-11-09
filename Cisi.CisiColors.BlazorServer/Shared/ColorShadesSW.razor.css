@@ -4,6 +4,7 @@
     min-height: 100px;
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 :is(.light-color-shades, .dark-color-shades) {
@@ -12,6 +13,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
 ::deep :is(.light-color-shades, .dark-color-shades) > * {

@@ -9,9 +9,20 @@
             @if (ColorDescriptionMode >= ColorDescriptionMode.Main)
             {
                 <dív class="color-texts">
-                    <ColorTextHex Color=@context />
-                    <ColorTextRGB Color=@context />
-                    <ColorTextHSL Color=@context />
+                    <div>
+                        <ColorTextHex Color=@context />
+                        <QuickCopy ValueToCopy=@(context.ToString()) BackgroundColor=@context />
+                    </div>
+                    <hr class=@CSS_NeedLight />
+                    <div>
+                        <ColorTextRGB Color=@context />
+                        <QuickCopy ValueToCopy=@(context.ToRGBString()) BackgroundColor=@context />
+                    </div>
+                    <hr class=@CSS_NeedLight />
+                    <div>
+                        <ColorTextHSL Color=@context />
+                        <QuickCopy ValueToCopy=@(context.HSL.ToString()) BackgroundColor=@context />
+                    </div>
                 </dív>
             }
         }
@@ -30,4 +41,7 @@
 
     [Parameter]
     public ColorDescriptionMode ColorDescriptionMode { get; set; }
+
+    private bool needLight => Color.IsLightColor() == false;
+    private string CSS_NeedLight => needLight ? "light" : "dark";
 }

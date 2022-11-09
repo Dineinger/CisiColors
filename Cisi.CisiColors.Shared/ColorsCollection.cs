@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Cisi.CisiColors;
 
@@ -6,13 +7,13 @@ public sealed class ColorsCollection : ICollection<ColorDefinition>
 {
     private readonly List<ColorDefinition> _values;
 
-    private ColorsCollection(string? title, List<ColorDefinition> values)
+    private ColorsCollection(string title, List<ColorDefinition> values)
     {
         _values = values;
         Title = title;
     }
 
-    public string? Title { get; }
+    public string Title { get; }
 
     public int Count => _values.Count;
 

@@ -19,22 +19,5 @@
     public RenderFragment<Color>? ChildContent { get; set;  }
 
     private string CSS_IsLight => IsLight ? "light-color" : "dark-color";
-    private bool IsLight
-    {
-        get
-        {
-            var r = Color.R;
-            var g = Color.G;
-            var b = Color.B;
-            var lightnessLimit = 0x80;
-            if (
-                (r > lightnessLimit && (g > lightnessLimit * 1.2 || b > lightnessLimit))
-                || (g > lightnessLimit * 1.2 && g > lightnessLimit)
-                )
-            {
-                return true;
-            }
-            return false;
-        }
-    }
+    private bool IsLight => Color.IsLightColor();
 }
