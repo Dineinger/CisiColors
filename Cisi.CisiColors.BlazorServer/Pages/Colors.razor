@@ -7,7 +7,11 @@
 <div class="center">
     <h1>Colors</h1>
 
-    @if (ColorReaderValue.TryCouldLoad(out var value))
+    @if (ColorReaderValue is null)
+    {
+        <p role="alert">Not yet loaded</p>
+    }
+    else if (ColorReaderValue.TryCouldLoad(out var value))
     {
         <ColorList Title=@Name Colors=@value ColorDescriptionMode=@_colorDescriptionMode ColorDetails=@_colorDetails />
 
@@ -19,7 +23,7 @@
     }
     else
     {
-        <p>The color list @Name is not known</p>
+        <p role="alert">The color list @Name is not known</p>
     }
 </div>
 
@@ -27,7 +31,7 @@
     [Parameter]
     public string? Name { get; set; }
 
-    ColorCollectionAndStatus ColorReaderValue { get; set; }
+    ColorCollectionAndStatus? ColorReaderValue { get; set; }
 
     protected override async Task OnParametersSetAsync()
     {
