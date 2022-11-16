@@ -1,0 +1,38 @@
+﻿@inject ILogger<ColorText> Logger
+
+<div class="color-text">
+    @Description @Text
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public Color Color { get; set; }
+
+    [Parameter]
+    public bool WithDescription { get; set; } = true;
+
+    [Parameter, EditorRequired]
+    public ColorRepresentation ColorRepresentation { get; set; }
+
+    string Description => ColorRepresentation switch
+    {
+        ColorRepresentation.HEX => "Hex:",
+        ColorRepresentation.RGB => "RGB:",
+        ColorRepresentation.HSL => "HSL:",
+        _ => LogUnknownColorRepresentation("Hex:"),
+    };
+
+    string Text => ColorRepresentation switch
+    {
+        ColorRepresentation.HEX => Color.ToString(),
+        ColorRepresentation.RGB => Color.ToRGBString(),
+        ColorRepresentation.HSL => Color.HSL.ToString(),
+        _ => LogUnknownColorRepresentation(Color.ToString()),
+    };
+
+    string LogUnknownColorRepresentation(string fallbackValue)
+    {
+        Logger.LogError("{ColorRepresentation} wasn't matched in {component}", ColorRepresentation, nameof(ColorText));
+        return fallbackValue;
+    }
+}

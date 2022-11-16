@@ -1,8 +1,0 @@
-@inherits ColorTextBase
-
-<div class="color-text">@Text</div>
-
-@code {
-    public override Func<Color, string> ColorAsString => color => color.ToRGBString();
-    public override Func<string> Description => () => "RGB";
-}
