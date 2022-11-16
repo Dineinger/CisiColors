@@ -33,7 +33,7 @@
 
     ColorCollectionAndStatus? ColorReaderValue { get; set; }
 
-    protected override async Task OnParametersSetAsync()
+    protected override async Task OnInitializedAsync()
     {
         ColorReaderValue = Name switch
         {
