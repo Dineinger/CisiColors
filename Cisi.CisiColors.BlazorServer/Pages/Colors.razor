@@ -37,8 +37,9 @@
     {
         ColorReaderValue = Name switch
         {
-            "cisi" or "cisi-colors" => (await DB.GetAllColorCollectionsAsync()).FirstOrDefault(x => x.Value?.Title == "Cisi Rainbow"),
-            _ => ColorCollectionAndStatus.NotFound(),
+            //"cisi" or "cisi-colors" => (await DB.GetAllColorCollectionsAsync()).FirstOrDefault(x => x.Value?.Title == "Cisi Rainbow"),
+            "cisi" or "cisi-colors" => await DB.GetColorCollectionAsync("Cisi Rainbow"),
+            _ => await DB.GetColorCollectionAsync(Name),
         };
     }
 
