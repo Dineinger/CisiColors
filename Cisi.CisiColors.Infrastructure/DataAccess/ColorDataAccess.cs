@@ -5,10 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System.Text.RegularExpressions;
 
 namespace Cisi.CisiColors.Infrastructure.DB;
 
-public sealed class ColorDataAccess : IColorDataAccess
+public sealed partial class ColorDataAccess : IColorDataAccess
 {
     private readonly IConfiguration _config;
     private readonly ILogger<ColorDataAccess> _logger;
@@ -59,20 +60,51 @@ public sealed class ColorDataAccess : IColorDataAccess
         return CreateListOfColorcollectionAndStatus(allItems.ToList());
     }
 
+    [GeneratedRegex(@"[A-z ]+")]
+    private partial Regex ColorCollectionName();
+
+    [Obsolete("not id but name")]
+    public async Task<ColorCollectionAndStatus> GetColorCollectionAsync(string? name)
+    {
+        if (name is null)
+        {
+            return ColorCollectionAndStatus.NotFound();
+        }
+
+        if (ColorCollectionName().IsMatch(name) == false)
+        {
+            return ColorCollectionAndStatus.NotFound();
+        }
+
+        var items = await _colorCollectionsCollection.FindAsync(x => x.Title == name);
+        var list = items.ToList();
+
+        if (list.Count == 0)
+        {
+            return ColorCollectionAndStatus.NotFound();
+        }
+        return CreateColorCollectionAndStatus(list[0]);
+    }
+
     private IReadOnlyList<ColorCollectionAndStatus> CreateListOfColorcollectionAndStatus(List<ColorCollectionModel> list)
     {
         List<ColorCollectionAndStatus> result = new();
         foreach (var collectionFromDB in list)
         {
-            List<ColorDefinition> colors = CreateColorDefinitions(collectionFromDB.Colors);
-
-            var colorCollection = ColorsCollection.From(
-                collectionFromDB.Title ?? "unknown collection",
-                colors);
-
-            result.Add(ColorCollectionAndStatus.FoundAndLoaded(colorCollection));
+            result.Add(CreateColorCollectionAndStatus(collectionFromDB));
         }
         return result;
+    }
+
+    private ColorCollectionAndStatus CreateColorCollectionAndStatus(ColorCollectionModel value)
+    {
+        List<ColorDefinition> colors = CreateColorDefinitions(value.Colors);
+
+        var colorCollection = ColorsCollection.From(
+            value.Title ?? "unknown collection",
+            colors);
+
+        return ColorCollectionAndStatus.FoundAndLoaded(colorCollection);
     }
 
     private List<ColorDefinition> CreateColorDefinitions(List<ColorModel>? colorsFromDB)

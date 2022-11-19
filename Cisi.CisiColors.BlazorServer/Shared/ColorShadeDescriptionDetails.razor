@@ -3,15 +3,24 @@
     <div class="description-details">
         @if (ColorDetails.IsHexOn)
         {
-            <ColorTextHex Color=@Color WithDescription=true />
+            <ColorText
+                ColorRepresentation=@ColorRepresentation.HEX
+                Color=@Color
+                WithDescription=true />
         }
         @if (ColorDetails.IsRgbOn)
         {
-            <ColorTextRGB Color=@Color WithDescription=true />
+            <ColorText
+                ColorRepresentation=@ColorRepresentation.RGB
+                Color=@Color
+                WithDescription=true />
         }
         @if (ColorDetails.IsHslOn)
         {
-            <ColorTextHSL Color=@Color WithDescription=true />
+            <ColorText
+            ColorRepresentation=@ColorRepresentation.HSL
+            Color=@Color
+                WithDescription=true />
         }
     </div>
 }

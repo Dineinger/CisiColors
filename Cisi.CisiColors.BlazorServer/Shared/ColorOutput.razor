@@ -10,17 +10,17 @@
             {
                 <dív class="color-texts">
                     <div>
-                        <ColorTextHex Color=@context />
+                        <ColorText ColorRepresentation=@ColorRepresentation.HEX Color=@context />
                         <QuickCopy ValueToCopy=@(context.ToString()) BackgroundColor=@context />
                     </div>
                     <hr class=@CSS_NeedLight />
                     <div>
-                        <ColorTextRGB Color=@context />
+                        <ColorText ColorRepresentation=@ColorRepresentation.RGB Color=@context />
                         <QuickCopy ValueToCopy=@(context.ToRGBString()) BackgroundColor=@context />
                     </div>
                     <hr class=@CSS_NeedLight />
                     <div>
-                        <ColorTextHSL Color=@context />
+                        <ColorText ColorRepresentation=@ColorRepresentation.HSL Color=@context />
                         <QuickCopy ValueToCopy=@(context.HSL.ToString()) BackgroundColor=@context />
                     </div>
                 </dív>

@@ -7,7 +7,11 @@
 <div class="center">
     <h1>Colors</h1>
 
-    @if (ColorReaderValue.TryCouldLoad(out var value))
+    @if (ColorReaderValue is null)
+    {
+        <p role="alert">Not yet loaded</p>
+    }
+    else if (ColorReaderValue.TryCouldLoad(out var value))
     {
         <ColorList Title=@Name Colors=@value ColorDescriptionMode=@_colorDescriptionMode ColorDetails=@_colorDetails />
 
@@ -19,7 +23,7 @@
     }
     else
     {
-        <p>The color list @Name is not known</p>
+        <p role="alert">The color list @Name is not known</p>
     }
 </div>
 
@@ -27,14 +31,15 @@
     [Parameter]
     public string? Name { get; set; }
 
-    ColorCollectionAndStatus ColorReaderValue { get; set; }
+    ColorCollectionAndStatus? ColorReaderValue { get; set; }
 
-    protected override async Task OnParametersSetAsync()
+    protected override async Task OnInitializedAsync()
     {
         ColorReaderValue = Name switch
         {
-            "cisi" or "cisi-colors" => (await DB.GetAllColorCollectionsAsync()).FirstOrDefault(x => x.Value?.Title == "Cisi Rainbow"),
-            _ => ColorCollectionAndStatus.NotFound(),
+            //"cisi" or "cisi-colors" => (await DB.GetAllColorCollectionsAsync()).FirstOrDefault(x => x.Value?.Title == "Cisi Rainbow"),
+            "cisi" or "cisi-colors" => await DB.GetColorCollectionAsync("Cisi Rainbow"),
+            _ => await DB.GetColorCollectionAsync(Name),
         };
     }
 

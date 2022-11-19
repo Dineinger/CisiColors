@@ -8,5 +8,7 @@ namespace Cisi.CisiColors.Infrastructure.DB
         List<ColorModel> GetAllColors();
         Task<IReadOnlyList<ColorCollectionAndStatus>> GetAllColorCollectionsAsync();
         IReadOnlyList<ColorCollectionAndStatus> GetAllColorCollections();
+
+        Task<ColorCollectionAndStatus> GetColorCollectionAsync(string? idName);
     }
 }
